@@ -1,0 +1,30 @@
+@use "../../../../styles/mixins.scss" as *;
+@use "../../../../styles/variables.scss" as *;
+
+nav {
+  width: 250px;
+  height: 100vh;
+  background-color: red;
+  box-sizing: border-box;
+  padding: 15px;
+
+  ul {
+    @include flex-column();
+    gap: 30px;
+
+    li {
+      list-style: none;
+
+      a {
+        font-size: $font-size-large;
+        font-family: $font-primary;
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

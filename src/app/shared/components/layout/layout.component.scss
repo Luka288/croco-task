@@ -1,0 +1,21 @@
+@use "../../../../app/styles/mixins.scss" as *;
+@use "../../../../app/styles/variables.scss" as *;
+
+.layout-container {
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+
+  #sidebar {
+    background-color: red;
+  }
+
+  .main-area {
+    flex: 1;
+  }
+
+  .content {
+    box-sizing: border-box;
+    padding: 10px;
+  }
+}
