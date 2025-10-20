@@ -1,0 +1,69 @@
+@use "../../../styles/variables.scss" as *;
+@use "../../../styles/mixins.scss" as *;
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  font-family: $font-primary;
+  border: 1px solid #e2e8f0;
+
+  th,
+  td {
+    min-width: 120px;
+    padding: 12px 16px;
+    border: none;
+  }
+
+  thead {
+    tr {
+      border-bottom: 2px solid #e2e8f0;
+
+      th {
+        background-color: #f7f9fc;
+        color: #4a5568;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+
+        &:first-child {
+          border-top-left-radius: 7px;
+        }
+        &:last-child {
+          border-top-right-radius: 7px;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #e2e8f0;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:nth-child(even) {
+        background-color: #f9fafb;
+      }
+      &:nth-child(odd) {
+        background-color: #ffffff;
+      }
+
+      &:hover {
+        background-color: #f0f4ff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        transform: none;
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    td {
+      border-right: 1px solid #e2e8f0;
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}

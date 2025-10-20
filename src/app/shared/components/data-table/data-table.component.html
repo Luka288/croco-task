@@ -1,0 +1,27 @@
+<table border="1" cellpadding="5" cellspacing="0" class="data-table">
+  <thead>
+    <tr>
+      @for (col of columns; track col.header) {
+      <th>
+        {{ col.header }}
+      </th>
+      }
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (row of data; track $index) {
+    <tr>
+      @for (col of columns; track col.header) {
+      <td>
+        {{ col.value(row) }}
+      </td>
+      }
+    </tr>
+    }@empty {
+    <tr>
+      <td [attr.colspan]="columns.length">No items to display.</td>
+    </tr>
+    }
+  </tbody>
+</table>
