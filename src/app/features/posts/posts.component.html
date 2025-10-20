@@ -1,5 +1,9 @@
 <section>
   <div class="table-content">
-    <app-data-table [data]="postsData()!" [columns]="columns" />
+    <app-data-table
+      [data]="postsData()!"
+      [columns]="columns"
+      [rowActions]="actions"
+    />
   </div>
 </section>

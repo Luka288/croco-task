@@ -20,6 +20,13 @@ export class PostsComponent implements OnInit {
     { header: 'Post Title', value: (row: PostInterface) => row.body },
   ];
 
+  actions = [
+    {
+      label: 'Details',
+      action: (row: PostInterface) => this.openModal(row),
+    },
+  ];
+
   postsData = signal<PostInterface[]>([]);
 
   ngOnInit(): void {
@@ -36,4 +43,10 @@ export class PostsComponent implements OnInit {
       }
     });
   }
+
+  openModal(modalData: PostInterface) {
+    //
+  }
 }
+
+// TODO: გასასწორებელია რესპონსივი

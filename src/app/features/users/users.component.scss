@@ -4,5 +4,9 @@ section {
   .table-content {
     width: 50%;
     margin: auto;
+
+    @media (max-width: 1024px) {
+      width: 80%;
+    }
   }
 }
