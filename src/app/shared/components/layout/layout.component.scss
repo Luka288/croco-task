@@ -4,10 +4,10 @@
 .layout-container {
   width: 100%;
   display: flex;
-  min-height: 100vh;
 
   #sidebar {
-    background-color: red;
+    min-height: 100vh;
+    background-color: $color-sidebar-bg;
   }
 
   .main-area {

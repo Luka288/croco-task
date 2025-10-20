@@ -66,4 +66,18 @@
       }
     }
   }
+
+  button {
+    width: 75px;
+    outline: none;
+    border: none;
+    padding: 15px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #4a5568;
+      color: #ffffff;
+      transition: 0.3s ease-in;
+    }
+  }
 }

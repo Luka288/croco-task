@@ -4,13 +4,15 @@
 nav {
   width: 250px;
   height: 100vh;
-  background-color: red;
+  background-color: $color-sidebar-bg;
   box-sizing: border-box;
   padding: 15px;
 
   ul {
     @include flex-column();
     gap: 30px;
+    position: fixed;
+    z-index: 200;
 
     li {
       list-style: none;
@@ -19,10 +21,18 @@ nav {
         font-size: $font-size-large;
         font-family: $font-primary;
         text-decoration: none;
-        color: white;
+        color: $color-text-secondary;
 
         &:hover {
-          text-decoration: underline;
+          text-decoration: none;
+          background-color: rgba(255, 255, 255, 0.1);
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.25);
+          transform: translateY(-1px);
+        }
+
+        &.active {
+          color: #ffffff;
+          border-bottom: 1px solid $color-text-primary;
         }
       }
     }

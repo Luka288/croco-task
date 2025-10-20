@@ -1,1 +1,9 @@
-<app-data-table [columns]="columns" [data]="usersData()!" />
+<section>
+  <div class="table">
+    <app-data-table
+      [columns]="columns"
+      [data]="usersData()!"
+      [rowActions]="userRowActions"
+    />
+  </div>
+</section>

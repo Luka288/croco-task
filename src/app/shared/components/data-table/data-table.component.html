@@ -16,6 +16,14 @@
       <td>
         {{ col.value(row) }}
       </td>
+      } @if (rowActions.length) {
+      <td>
+        @for (action of rowActions; track action.label) {
+        <button (click)="action.action(row)">
+          {{ action.label }}
+        </button>
+        }
+      </td>
       }
     </tr>
     }@empty {
