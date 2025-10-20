@@ -11,7 +11,7 @@ header {
   #left-side {
     a {
       text-decoration: none;
-      font-size: $font-size-large;
+      font-size: clamp(12px, 2vw, 25px);
       font-family: $font-primary;
       color: $color-text-primary;
       margin: 0;
@@ -22,7 +22,7 @@ header {
   #right-side {
     a {
       font-family: $font-primary;
-      font-size: $font-size-medium;
+      font-size: clamp(12px, 2vw, 25px);
       margin: 0;
       cursor: pointer;
     }

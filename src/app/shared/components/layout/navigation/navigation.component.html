@@ -1,5 +1,9 @@
-<nav>
-  <ul>
+<nav [ngClass]="{ activeNav: isOpen() }">
+  <div class="toggle" (click)="isOpen.set(!isOpen())">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+  <ul [ngClass]="{ active: isOpen() }">
     @for (item of NAV_ITEMS; track $index) {
     <li>
       <a

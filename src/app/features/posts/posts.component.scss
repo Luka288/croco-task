@@ -1,5 +1,12 @@
 section {
+  width: 100%;
+
   .table-content {
-    overflow: auto;
+    width: 50%;
+    margin: auto;
+
+    @media (max-width: 1024px) {
+      width: 80%;
+    }
   }
 }
