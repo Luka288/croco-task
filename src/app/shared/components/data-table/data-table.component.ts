@@ -6,7 +6,7 @@ import { TruncatePipe } from '../../../core/pipes/truncate.pipe';
 
 @Component({
   selector: 'app-data-table',
-  imports: [CommonModule, MatTableModule, MatButton, TruncatePipe],
+  imports: [CommonModule, MatTableModule, TruncatePipe],
   templateUrl: './data-table.component.html',
   styleUrl: './data-table.component.scss',
 })

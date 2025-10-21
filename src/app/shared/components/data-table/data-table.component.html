@@ -11,7 +11,7 @@
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let row">
         <button
-          mat-button
+          class="actionButton"
           *ngFor="let action of rowActions"
           (click)="action.action(row)"
         >

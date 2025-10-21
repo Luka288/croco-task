@@ -1,14 +1,13 @@
 <section>
+  @if (!isUserPosts()) {
   <div class="table-content">
-    @if (!isUserPosts()) {
     <app-data-table
       [data]="postsData()!"
       [columns]="columns"
       [rowActions]="actions"
     />
-    }
   </div>
-  @if(isUserPosts()) {
+  } @else {
   <div class="user-posts">
     @for (posts of postsData(); track $index) {
     <app-post-card [cardData]="posts" />

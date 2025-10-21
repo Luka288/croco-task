@@ -9,5 +9,26 @@
       width: 100%;
       min-width: 600px;
     }
+
+    .actionButton {
+      width: 78px;
+      outline: none;
+      border: none;
+      background-color: #626fbe;
+      color: white;
+      box-sizing: border-box;
+      padding: 10px;
+      cursor: pointer;
+      transition: ease-out 0.3s;
+
+      &:hover {
+        background-color: #303f9f;
+        transition: ease-in 0.3s;
+      }
+
+      &:active {
+        background-color: #283593;
+      }
+    }
   }
 }

@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     title: 'Home | Users',
     loadComponent: () =>
       import('./features/users/users.component').then((m) => m.UsersComponent),
@@ -28,6 +28,6 @@ export const routes: Routes = [
     path: '**',
     pathMatch: 'full',
     title: 'Not Found',
-    redirectTo: '',
+    redirectTo: 'home',
   },
 ];
