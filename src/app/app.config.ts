@@ -3,7 +3,11 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { POSTS_API_URL, USERS_API_URL } from './core/tokens/api.tokens';
+import {
+  POSTS_API_URL,
+  TODOS_API_URL,
+  USERS_API_URL,
+} from './core/tokens/api.tokens';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +23,11 @@ export const appConfig: ApplicationConfig = {
     {
       provide: POSTS_API_URL,
       useValue: 'https://jsonplaceholder.typicode.com/posts',
+    },
+
+    {
+      provide: TODOS_API_URL,
+      useValue: 'https://jsonplaceholder.typicode.com/todos',
     },
   ],
 };

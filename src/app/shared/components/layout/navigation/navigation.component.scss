@@ -2,7 +2,7 @@
 @use "../../../../styles/variables.scss" as *;
 
 nav {
-  width: 250px;
+  width: 200px;
   height: 100vh;
   background-color: $color-sidebar-bg;
   box-sizing: border-box;
@@ -33,6 +33,7 @@ nav {
     gap: 30px;
     position: fixed;
     z-index: 200;
+    padding: 0;
 
     @media (max-width: 1024px) {
       display: none;

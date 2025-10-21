@@ -25,6 +25,13 @@ export const routes: Routes = [
   },
 
   {
+    path: 'todos',
+    title: 'User | Todo List',
+    loadComponent: () =>
+      import('./features/todos/todos.component').then((m) => m.TodosComponent),
+  },
+
+  {
     path: '**',
     pathMatch: 'full',
     title: 'Not Found',

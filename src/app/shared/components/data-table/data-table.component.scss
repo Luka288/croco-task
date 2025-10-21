@@ -1,3 +1,6 @@
+@use "../../../styles/mixins.scss" as *;
+@use "../../../styles/variables.scss" as *;
+
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
@@ -8,6 +11,29 @@
     &.full-width {
       width: 100%;
       min-width: 600px;
+    }
+
+    tr {
+      cursor: pointer;
+      &.isCompleted {
+        background-color: $success-green !important;
+        color: white;
+
+        &:hover {
+          background-color: $success-green-hover !important;
+          color: white;
+        }
+      }
+
+      &:hover {
+        background-color: rgb(212, 211, 211);
+      }
+    }
+
+    .actionButtons {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
     }
 
     .actionButton {

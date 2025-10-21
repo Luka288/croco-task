@@ -11,6 +11,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { debounceTime } from 'rxjs';
+import { yearsPerPage } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-users',
@@ -42,6 +43,10 @@ export class UsersComponent implements OnInit {
       label: 'Posts',
       action: (row: User) => this.navigateToPosts(row.id),
     },
+    {
+      label: 'Todos',
+      action: (row: User) => this.navigateToTodo(row.id),
+    },
   ];
 
   ngOnInit(): void {
@@ -52,6 +57,10 @@ export class UsersComponent implements OnInit {
 
   navigateToPosts(userId: number) {
     this.router.navigate(['/posts'], { queryParams: { userId } });
+  }
+
+  navigateToTodo(userId: number) {
+    this.router.navigate(['/todos'], { queryParams: { userId } });
   }
 
   listenSearch() {

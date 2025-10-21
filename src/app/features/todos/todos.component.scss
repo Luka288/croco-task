@@ -1,0 +1,11 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/variables.scss" as *;
+
+section {
+  width: 100%;
+
+  .table-wrapper {
+    width: 80%;
+    margin: auto;
+  }
+}

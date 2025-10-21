@@ -23,7 +23,7 @@ export class PostsComponent implements OnInit {
 
   columns = [
     { header: 'Name', value: (row: PostInterface) => row.name },
-    { header: 'Post Title', value: (row: PostInterface) => row.body },
+    { header: 'Post Title', value: (row: PostInterface) => row.title },
   ];
 
   actions = [
