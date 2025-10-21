@@ -1,1 +1,30 @@
-<p>promotions works!</p>
+<div class="main-container">
+  <div class="spinner-container">
+    <div class="pointer">▼</div>
+    <div class="circle" appWheelSpin #wheel="appWheelSpin">
+      @for (item of sectorData(); track $index) {
+      <div
+        class="sector"
+        [style.transform]="'rotate(' + $index * 36 + 'deg)'"
+        [style.background-color]="item.color"
+      >
+        <span>{{ item.value }}</span>
+      </div>
+      }
+    </div>
+
+    <div class="spin-controls">
+      <input
+        id="inputNumber"
+        type="number"
+        [(ngModel)]="selectedNumber"
+        min="1"
+        max="10"
+        placeholder="1 - 10"
+      />
+      <button [disabled]="isSpinning()" (click)="spinWheel(selectedNumber()!)">
+        <span> @if (isSpinning()) { ტრიალებს... } @else { დაატრიალე }</span>
+      </button>
+    </div>
+  </div>
+</div>

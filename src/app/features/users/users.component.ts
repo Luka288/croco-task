@@ -23,7 +23,6 @@ export class UsersComponent implements OnInit {
   private readonly usersService = inject(UserService);
   private readonly router = inject(Router);
 
-  // usersData = toSignal<User[]>(this.usersService.getUsers());
   usersData = signal<User[]>([]);
 
   searchGroup = new FormGroup({
@@ -50,7 +49,6 @@ export class UsersComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.usersService.getUsers().subscribe(console.log);
     this.listenSearch();
     this.allUsers();
   }

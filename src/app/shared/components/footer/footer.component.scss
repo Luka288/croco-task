@@ -1,0 +1,11 @@
+@use "../../../styles/mixins.scss" as *;
+@use "../../../styles/variables.scss" as *;
+
+footer {
+  width: 100%;
+  background-color: $color-footer-bg;
+  color: $color-text-primary;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 10px;
+}
