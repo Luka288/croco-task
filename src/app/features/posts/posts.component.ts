@@ -5,6 +5,8 @@ import { DataTableComponent } from '../../shared/components/data-table/data-tabl
 import { PostInterface } from '../../core/models/post.models';
 import { ActivatedRoute } from '@angular/router';
 import { PostCardComponent } from '../../shared/components/post-card/post-card.component';
+import { MatDialog } from '@angular/material/dialog';
+import { PostModalComponent } from '../../shared/components/post-modal/post-modal.component';
 
 @Component({
   selector: 'app-posts',
@@ -15,6 +17,7 @@ import { PostCardComponent } from '../../shared/components/post-card/post-card.c
 export class PostsComponent implements OnInit {
   private readonly postsService = inject(PostsService);
   private readonly route = inject(ActivatedRoute);
+  private readonly dialog = inject(MatDialog);
 
   isUserPosts = signal<boolean>(false);
 
@@ -50,6 +53,9 @@ export class PostsComponent implements OnInit {
   }
 
   openModal(modalData: PostInterface) {
-    //
+    this.dialog.open(PostModalComponent, {
+      width: '450px',
+      data: modalData,
+    });
   }
 }

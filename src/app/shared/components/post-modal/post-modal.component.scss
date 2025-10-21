@@ -1,0 +1,41 @@
+@use "../../../styles/mixins.scss" as *;
+@use "../../../styles/variables.scss" as *;
+
+.modal {
+  width: 450px;
+  min-height: 350px;
+  box-sizing: border-box;
+  padding: 15px;
+
+  .post-title {
+    font-weight: 400;
+    font-family: $font-primary;
+  }
+
+  .btns {
+    padding-top: 10%;
+    @include flex(center, center);
+
+    button {
+      width: 80px;
+      outline: none;
+      background-color: $color-warning;
+      border: none;
+      color: $color-text-primary;
+      box-sizing: border-box;
+      padding: 10px;
+      cursor: pointer;
+      transition: ease-in 0.2s;
+
+      &:active {
+        background-color: $color-warning-active;
+        transition: ease-in 0.2s;
+      }
+
+      &:hover {
+        background-color: $color-warning-hover;
+        transition: ease-in 0.2s;
+      }
+    }
+  }
+}
