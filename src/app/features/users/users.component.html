@@ -1,4 +1,10 @@
 <section>
+  <div class="search-container">
+    <form action="" [formGroup]="searchGroup">
+      <input type="text" placeholder="Search" formControlName="searchControl" />
+    </form>
+  </div>
+
   <div class="table-content">
     <app-data-table
       [columns]="columns"

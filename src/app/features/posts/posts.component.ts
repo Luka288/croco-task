@@ -1,6 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { PostsService } from '../../core/services/posts.service';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { DataTableComponent } from '../../shared/components/data-table/data-table.component';
 import { PostInterface } from '../../core/models/post.models';
 import { ActivatedRoute } from '@angular/router';
@@ -20,9 +19,10 @@ export class PostsComponent implements OnInit {
   private readonly dialog = inject(MatDialog);
 
   isUserPosts = signal<boolean>(false);
+  postsData = signal<PostInterface[]>([]);
 
   columns = [
-    { header: 'Name', value: (row: PostInterface) => row.userId },
+    { header: 'Name', value: (row: PostInterface) => row.name },
     { header: 'Post Title', value: (row: PostInterface) => row.body },
   ];
 
@@ -32,8 +32,6 @@ export class PostsComponent implements OnInit {
       action: (row: PostInterface) => this.openModal(row),
     },
   ];
-
-  postsData = signal<PostInterface[]>([]);
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {

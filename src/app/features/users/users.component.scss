@@ -1,3 +1,6 @@
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/variables.scss" as *;
+
 section {
   width: 100%;
 
@@ -14,6 +17,26 @@ section {
       @media (max-width: 425px) {
         width: 80%;
       }
+    }
+  }
+
+  .search-container {
+    width: 100%;
+    margin-bottom: 20px;
+    @include flex();
+
+    input {
+      width: 100%;
+      max-width: 320px;
+      height: 42px;
+      background-color: $color-input-bg;
+      outline: none;
+      border: none;
+      margin: auto;
+      box-sizing: border-box;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: $radius-md;
     }
   }
 }

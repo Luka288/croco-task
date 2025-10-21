@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, inject, Injectable } from '@angular/core';
 import { USERS_API_URL } from '../tokens/api.tokens';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { User } from '../models';
 
 @Injectable({
@@ -18,5 +18,20 @@ export class UserService {
 
   fetchUserById(id: number) {
     return this.http.get<User[]>(`${this.USERS_ENDPOINT}?userId=${id}`);
+  }
+
+  searchUser(searchParam: string): Observable<User[]> {
+    return this.http
+      .get<User[]>(this.USERS_ENDPOINT)
+      .pipe(
+        map((users) =>
+          users.filter(
+            (user) =>
+              user.name.toLowerCase().includes(searchParam.toLowerCase()) ||
+              user.username.toLowerCase().includes(searchParam.toLowerCase()) ||
+              user.email.toLowerCase().includes(searchParam.toLowerCase())
+          )
+        )
+      );
   }
 }

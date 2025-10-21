@@ -1,24 +1,35 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Inject, Injectable } from '@angular/core';
 import { POSTS_API_URL } from '../tokens/api.tokens';
-import { Observable } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 import { PostInterface } from '../models';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostsService {
   private readonly http = inject(HttpClient);
+  private readonly userService = inject(UserService);
 
   constructor(@Inject(POSTS_API_URL) private API_ENDPOINT: string) {}
 
-  getPosts(): Observable<any> {
-    return this.http.get(this.API_ENDPOINT);
+  getPosts(): Observable<PostInterface[]> {
+    return this.http.get<PostInterface[]>(this.API_ENDPOINT).pipe(
+      switchMap((posts) =>
+        this.userService.getUsers().pipe(
+          map((users) =>
+            posts.map((post) => ({
+              ...post,
+              name: users.find((u) => u.id === post.userId)?.name || 'Unknown',
+            }))
+          )
+        )
+      )
+    );
   }
 
-  getPostByUser(userId: number): Observable<PostInterface[]> {
-    return this.http.get<PostInterface[]>(
-      `${this.API_ENDPOINT}?userId=${userId}`
-    );
+  getPostByUser(id: number): Observable<PostInterface[]> {
+    return this.http.get<PostInterface[]>(`${this.API_ENDPOINT}?userId=${id}`);
   }
 }

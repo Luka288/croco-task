@@ -1,13 +1,20 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { UserService } from '../../core/services/user.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { User } from '../../core/models/user.models';
 import { DataTableComponent } from '../../shared/components/data-table/data-table.component';
 import { Router } from '@angular/router';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
+import { debounceTime } from 'rxjs';
 
 @Component({
   selector: 'app-users',
-  imports: [DataTableComponent],
+  imports: [DataTableComponent, ReactiveFormsModule, FormsModule],
   templateUrl: './users.component.html',
   styleUrl: './users.component.scss',
 })
@@ -15,7 +22,12 @@ export class UsersComponent implements OnInit {
   private readonly usersService = inject(UserService);
   private readonly router = inject(Router);
 
-  usersData = toSignal<User[]>(this.usersService.getUsers());
+  // usersData = toSignal<User[]>(this.usersService.getUsers());
+  usersData = signal<User[]>([]);
+
+  searchGroup = new FormGroup({
+    searchControl: new FormControl('', { nonNullable: true }),
+  });
 
   columns = [
     { header: 'Name', value: (row: User) => row.name },
@@ -34,9 +46,34 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.usersService.getUsers().subscribe(console.log);
+    this.listenSearch();
+    this.allUsers();
   }
 
   navigateToPosts(userId: number) {
     this.router.navigate(['/posts'], { queryParams: { userId } });
+  }
+
+  listenSearch() {
+    this.searchGroup.controls.searchControl.valueChanges
+      .pipe(debounceTime(300))
+      .subscribe((res) => {
+        if (!res) {
+          this.allUsers();
+        }
+        this.searchUser(res);
+      });
+  }
+
+  searchUser(searchParam: string) {
+    this.usersService.searchUser(searchParam).subscribe((res) => {
+      this.usersData.set(res);
+    });
+  }
+
+  allUsers() {
+    this.usersService.getUsers().subscribe((res) => {
+      this.usersData.set(res);
+    });
   }
 }
