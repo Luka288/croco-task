@@ -2,11 +2,14 @@ section {
   width: 100%;
 
   .table-content {
-    width: 50%;
+    width: 80%;
+    max-width: 950px;
     margin: auto;
+    overflow-x: auto;
 
-    @media (max-width: 1024px) {
+    table {
       width: 80%;
+      min-width: 600px;
     }
   }
 }

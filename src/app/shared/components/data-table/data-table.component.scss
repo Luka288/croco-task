@@ -1,108 +1,13 @@
-@use "../../../styles/variables.scss" as *;
-@use "../../../styles/mixins.scss" as *;
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
 
-table {
-  // width: 100%;
-  border-collapse: separate;
-  font-family: $font-primary;
-  border: 1px solid #e2e8f0;
-  table-layout: fixed;
-  overflow: auto;
+  table {
+    width: 100%;
 
-  th,
-  td {
-    min-width: 90px;
-    border: none;
-
-    white-space: normal;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-
-    @media (max-width: 420px) {
-      min-width: 30px;
-    }
-  }
-
-  thead {
-    tr {
-      border-bottom: 2px solid #e2e8f0;
-
-      th {
-        background-color: #f7f9fc;
-        color: #4a5568;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 0.85rem;
-
-        &:first-child {
-          border-top-left-radius: 7px;
-        }
-        &:last-child {
-          border-top-right-radius: 7px;
-        }
-      }
-    }
-  }
-
-  tbody {
-    tr {
-      border-bottom: 1px solid #e2e8f0;
-
-      &:last-child {
-        border-bottom: none;
-      }
-
-      &:nth-child(even) {
-        background-color: #f9fafb;
-      }
-      &:nth-child(odd) {
-        background-color: #ffffff;
-      }
-
-      &:hover {
-        background-color: #f0f4ff;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-        transform: none;
-        position: relative;
-        z-index: 1;
-      }
-    }
-
-    td {
-      border-right: 1px solid #e2e8f0;
-
-      &:last-child {
-        border-right: none;
-      }
-    }
-  }
-
-  tbody td:last-child {
-    width: 1%;
-    white-space: nowrap;
-    vertical-align: middle;
-    padding: 0.25rem 0.5rem;
-  }
-
-  button {
-    width: auto;
-    max-width: 120px;
-    padding: 6px 8px;
-    box-sizing: border-box;
-    outline: none;
-    border: 1px solid #e2e8f0;
-    background: #f5f7fa;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #4a5568;
-      color: #ffffff;
-      transition: 0.2s ease-in;
+    &.full-width {
+      width: 100%;
+      min-width: 600px;
     }
   }
 }

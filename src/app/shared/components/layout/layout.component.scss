@@ -12,11 +12,31 @@
 
   .main-area {
     flex: 1;
+
+    @media (max-width: 1024px) {
+      width: 80%;
+    }
   }
 
   .content {
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
+    overflow: auto;
+
+    @media (max-width: 1024px) {
+      width: 80%;
+      margin: auto;
+    }
+  }
+}
+
+::ng-deep {
+  app-users {
+    @media (max-width: 1124px) {
+      width: 80%;
+      max-width: 1200px;
+      margin: auto;
+    }
   }
 }

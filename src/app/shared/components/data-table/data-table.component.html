@@ -1,35 +1,28 @@
-<table border="1" cellpadding="5" cellspacing="0" class="data-table">
-  <thead>
-    <tr>
-      @for (col of columns; track col.header) {
-      <th>
-        {{ col.header }}
-      </th>
-      }
-    </tr>
-  </thead>
+<div class="table-wrapper">
+  <table mat-table [dataSource]="data" class="mat-elevation-z8 full-width">
+    <ng-container *ngFor="let col of columns" [matColumnDef]="col.header">
+      <th mat-header-cell *matHeaderCellDef>{{ col.header }}</th>
+      <td mat-cell *matCellDef="let row">{{ col.value(row) }}</td>
+    </ng-container>
 
-  <tbody>
-    @for (row of data; track $index) {
-    <tr>
-      @for (col of columns; track col.header) {
-      <td>
-        {{ col.value(row) }}
-      </td>
-      } @if (rowActions.length) {
-      <td>
-        @for (action of rowActions; track action.label) {
-        <button (click)="action.action(row)">
+    <ng-container matColumnDef="actions" *ngIf="rowActions?.length">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let row">
+        <button
+          mat-button
+          *ngFor="let action of rowActions"
+          (click)="action.action(row)"
+        >
           {{ action.label }}
         </button>
-        }
       </td>
-      }
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr *ngIf="!data?.length">
+      <td [attr.colspan]="columns.length + 1">No items to display.</td>
     </tr>
-    }@empty {
-    <tr>
-      <td [attr.colspan]="columns.length">No items to display.</td>
-    </tr>
-    }
-  </tbody>
-</table>
+  </table>
+</div>
