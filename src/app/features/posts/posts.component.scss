@@ -1,12 +1,24 @@
+@use "../../styles/mixins.scss" as *;
+
 section {
   width: 100%;
 
   .table-content {
     width: 50%;
+    min-width: 600px;
     margin: auto;
 
     @media (max-width: 1024px) {
       width: 80%;
+    }
+  }
+
+  .user-posts {
+    width: 100%;
+    @include flex(center, flex-start, row, wrap, 10px);
+
+    app-post-card {
+      width: 320px;
     }
   }
 }

@@ -1,9 +1,18 @@
 <section>
   <div class="table-content">
+    @if (!isUserPosts()) {
     <app-data-table
       [data]="postsData()!"
       [columns]="columns"
       [rowActions]="actions"
     />
+    }
   </div>
+  @if(isUserPosts()) {
+  <div class="user-posts">
+    @for (posts of postsData(); track $index) {
+    <app-post-card [cardData]="posts" />
+    }
+  </div>
+  }
 </section>

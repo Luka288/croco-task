@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { TruncatePipe } from '../../../core/pipes/truncate.pipe';
 
 @Component({
   selector: 'app-data-table',
-  imports: [CommonModule, MatTableModule, MatButton],
+  imports: [CommonModule, MatTableModule, MatButton, TruncatePipe],
   templateUrl: './data-table.component.html',
   styleUrl: './data-table.component.scss',
 })

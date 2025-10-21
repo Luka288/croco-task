@@ -8,11 +8,15 @@ import { User } from '../models';
   providedIn: 'root',
 })
 export class UserService {
-  private readonly httpClinet = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
   constructor(@Inject(USERS_API_URL) private USERS_ENDPOINT: string) {}
 
   getUsers(): Observable<User[]> {
-    return this.httpClinet.get<User[]>(this.USERS_ENDPOINT);
+    return this.http.get<User[]>(this.USERS_ENDPOINT);
+  }
+
+  fetchUserById(id: number) {
+    return this.http.get<User[]>(`${this.USERS_ENDPOINT}?userId=${id}`);
   }
 }

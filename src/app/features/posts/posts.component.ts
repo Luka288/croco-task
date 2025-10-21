@@ -4,16 +4,19 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { DataTableComponent } from '../../shared/components/data-table/data-table.component';
 import { PostInterface } from '../../core/models/post.models';
 import { ActivatedRoute } from '@angular/router';
+import { PostCardComponent } from '../../shared/components/post-card/post-card.component';
 
 @Component({
   selector: 'app-posts',
-  imports: [DataTableComponent],
+  imports: [DataTableComponent, PostCardComponent],
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss',
 })
 export class PostsComponent implements OnInit {
   private readonly postsService = inject(PostsService);
   private readonly route = inject(ActivatedRoute);
+
+  isUserPosts = signal<boolean>(false);
 
   columns = [
     { header: 'Name', value: (row: PostInterface) => row.userId },
@@ -35,10 +38,12 @@ export class PostsComponent implements OnInit {
       if (userId) {
         this.postsService.getPostByUser(userId).subscribe((posts) => {
           this.postsData.set(posts);
+          this.isUserPosts.set(true);
         });
       } else {
         this.postsService.getPosts().subscribe((posts) => {
           this.postsData.set(posts);
+          this.isUserPosts.set(false);
         });
       }
     });
@@ -48,5 +53,3 @@ export class PostsComponent implements OnInit {
     //
   }
 }
-
-// TODO: გასასწორებელია რესპონსივი

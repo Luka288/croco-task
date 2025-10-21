@@ -8,8 +8,12 @@ section {
     overflow-x: auto;
 
     table {
-      width: 80%;
+      width: 50%;
       min-width: 600px;
+
+      @media (max-width: 425px) {
+        width: 80%;
+      }
     }
   }
 }
