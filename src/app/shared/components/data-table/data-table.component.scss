@@ -10,7 +10,14 @@
 
     &.full-width {
       width: 100%;
-      min-width: 600px;
+      min-width: unset;
+    }
+
+    th,
+    td {
+      white-space: nowrap;
+      text-align: left;
+      padding: 8px 12px;
     }
 
     tr {

@@ -8,6 +8,10 @@ section {
     min-width: 600px;
     margin: auto;
 
+    app-data-table {
+      min-width: 650px;
+    }
+
     @media (max-width: 1024px) {
       width: 80%;
     }

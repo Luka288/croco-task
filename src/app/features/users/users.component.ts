@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit {
 
   columns = [
     { header: 'Name', value: (row: User) => row.name },
-    { header: 'Username', value: (row: User) => row.username },
+    { header: 'Last name', value: (row: User) => row.lastName },
     { header: 'Email', value: (row: User) => row.email },
     { header: 'Phone', value: (row: User) => row.phone },
     { header: 'Company', value: (row: User) => row.company.name },

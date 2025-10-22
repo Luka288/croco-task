@@ -13,7 +13,9 @@ export class UserService {
   constructor(@Inject(USERS_API_URL) private USERS_ENDPOINT: string) {}
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.USERS_ENDPOINT);
+    return this.http
+      .get<User[]>(this.USERS_ENDPOINT)
+      .pipe(map((res) => res.map((user) => this.splitName(user))));
   }
 
   fetchUserById(id: number) {
@@ -25,13 +27,22 @@ export class UserService {
       .get<User[]>(this.USERS_ENDPOINT)
       .pipe(
         map((users) =>
-          users.filter(
-            (user) =>
-              user.name.toLowerCase().includes(searchParam.toLowerCase()) ||
-              user.username.toLowerCase().includes(searchParam.toLowerCase()) ||
-              user.email.toLowerCase().includes(searchParam.toLowerCase())
-          )
+          users
+            .map((user) => this.splitName(user))
+            .filter(
+              (user) =>
+                user.name.toLowerCase().includes(searchParam.toLowerCase()) ||
+                user.username
+                  .toLowerCase()
+                  .includes(searchParam.toLowerCase()) ||
+                user.email.toLowerCase().includes(searchParam.toLowerCase())
+            )
         )
       );
+  }
+
+  splitName(user: User) {
+    const [firstName, ...lastNameParts] = user.name.split(' ');
+    return { ...user, name: firstName, lastName: lastNameParts.join(' ') };
   }
 }
