@@ -3,31 +3,50 @@
 
 .main-container {
   width: 100%;
+  height: 100%;
+  @include flex(space-around, flex-start, row, wrap);
+
+  .leaderBoard {
+    width: 550px;
+    height: 550px;
+    border-radius: $radius-md;
+  }
 
   .spinner-container {
-    width: fit-content;
-    height: 500px;
+    width: 100%;
+    max-width: 650px;
+    height: 550px;
     @include flex(center, center, column);
     position: relative;
-    margin: auto;
 
     .pointer {
       position: absolute;
-      top: 35px;
+      top: 17px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 30px;
+      font-size: 40px;
       color: red;
       z-index: 10;
+
+      @media (max-width: 460px) {
+        top: 55px;
+        left: 50%;
+      }
     }
 
     .circle {
-      position: relative;
-      width: 300px;
+      width: 100%;
+      max-width: 300px;
       height: 300px;
+      position: relative;
       border-radius: 50%;
       border: 4px solid $color-header-bg;
       overflow: hidden;
+
+      @media (max-width: 460px) {
+        width: 200px;
+        height: 200px;
+      }
 
       .sector {
         width: 100%;
@@ -37,6 +56,7 @@
         left: 0;
         transform-origin: center;
         text-align: center;
+        flex: 1;
 
         clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%);
         clip-path: polygon(50% 50%, 50% 0%, 100% 0%);
@@ -54,14 +74,46 @@
     }
 
     .spin-controls {
+      @include flex(center, center, column, nowrap, 12px);
       margin-top: 20px;
 
       input {
-        width: 150px;
-        height: 44px;
+        width: 250px;
+        height: 34px;
         border: none;
-        background-color: #f0f0f0;
+        outline: none;
+        border-radius: $radius-lg;
+        box-sizing: border-box;
+        padding: 10px;
+        background-color: #dbdbdb;
       }
+
+      button {
+        min-width: 140px;
+        height: 35px;
+        box-sizing: border-box;
+        padding: 10px;
+        @include flex();
+        font-family: $font-primary;
+        text-transform: capitalize;
+        font-size: 18px;
+        outline: none;
+        background-color: $success-green;
+        color: $color-text-primary;
+        cursor: pointer;
+        border: none;
+        border-radius: $radius-md;
+        transition: ease-in 0.2s;
+
+        &:hover {
+          background-color: $success-green-hover;
+          transition: ease-out 0.2s;
+        }
+      }
+    }
+
+    .error-container {
+      min-height: 60px;
     }
   }
 }

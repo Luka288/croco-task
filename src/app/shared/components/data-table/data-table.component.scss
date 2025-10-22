@@ -34,26 +34,30 @@
       display: inline-flex;
       gap: 8px;
       align-items: center;
-    }
 
-    .actionButton {
-      width: 78px;
-      outline: none;
-      border: none;
-      background-color: #626fbe;
-      color: white;
-      box-sizing: border-box;
-      padding: 10px;
-      cursor: pointer;
-      transition: ease-out 0.3s;
+      .actionButton {
+        width: 78px;
+        outline: none;
+        border: none;
+        background-color: $soft-green;
+        color: white;
+        box-sizing: border-box;
+        padding: 10px;
+        cursor: pointer;
+        transition: ease-out 0.3s;
 
-      &:hover {
-        background-color: #303f9f;
-        transition: ease-in 0.3s;
-      }
+        &:hover {
+          background-color: $dark-green;
+          transition: ease-in 0.3s;
+          transform: scale(1.05);
+          box-shadow: 0 4px 10px rgba(67, 160, 71, 0.4);
+        }
 
-      &:active {
-        background-color: #283593;
+        &:active {
+          background-color: $pressed-green;
+          transform: scale(0.97);
+          box-shadow: 0 2px 6px rgba(46, 125, 50, 0.3);
+        }
       }
     }
   }

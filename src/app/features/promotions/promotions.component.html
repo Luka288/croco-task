@@ -1,4 +1,8 @@
 <div class="main-container">
+  <div class="leaderBoard">
+    <app-leaderboard />
+  </div>
+
   <div class="spinner-container">
     <div class="pointer">▼</div>
     <div class="circle" appWheelSpin #wheel="appWheelSpin">
@@ -16,15 +20,21 @@
     <div class="spin-controls">
       <input
         id="inputNumber"
-        type="number"
+        type="text"
         [(ngModel)]="selectedNumber"
         min="1"
         max="10"
-        placeholder="1 - 10"
+        placeholder="Enter number 1 - 10"
       />
       <button [disabled]="isSpinning()" (click)="spinWheel(selectedNumber()!)">
-        <span> @if (isSpinning()) { ტრიალებს... } @else { დაატრიალე }</span>
+        <span> @if (isSpinning()) { spining... } @else { spin }</span>
       </button>
+    </div>
+    <div
+      class="error-container"
+      [style.visibility]="errorText() ? 'visible' : 'hidden'"
+    >
+      <p class="err-text">{{ errorText() }}</p>
     </div>
   </div>
 </div>

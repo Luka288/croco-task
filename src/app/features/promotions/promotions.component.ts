@@ -3,20 +3,27 @@ import { Component, signal, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WheelSpinDirective } from '../../core/directives/wheel-spin.directive';
 import { single } from 'rxjs';
+import { LeaderboardComponent } from '../../shared/components/leaderboard/leaderboard.component';
 
 @Component({
   selector: 'app-promotions',
-  imports: [CommonModule, FormsModule, WheelSpinDirective],
+  imports: [
+    CommonModule,
+    FormsModule,
+    WheelSpinDirective,
+    LeaderboardComponent,
+  ],
   templateUrl: './promotions.component.html',
   styleUrl: './promotions.component.scss',
 })
 export class PromotionsComponent {
   sectorData = signal<{ value: number; color: string }[]>([]);
 
-  selectedNumber = signal<number | null>(1);
+  selectedNumber = signal<number | null>(null);
   sectorsCount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   isSpinning = signal<boolean>(false);
+  errorText = signal<string>('');
 
   @ViewChild('wheel') wheel!: WheelSpinDirective;
 
@@ -41,16 +48,17 @@ export class PromotionsComponent {
     if (this.isSpinning()) return;
 
     if (userNumber === null || userNumber < 1 || userNumber > 10) {
+      this.errorText.set('აღნიშნული სექტორი ვერ მოიძებნა');
       return;
     }
 
     this.isSpinning.set(true);
+    this.errorText.set('');
 
     this.wheel.spinToNumber(userNumber, 8, 4000);
 
     setTimeout(() => {
       this.isSpinning.set(false);
-      console.log('ტრიალი დასრულდა. არჩეულია:', userNumber);
     }, 4100);
   }
 }

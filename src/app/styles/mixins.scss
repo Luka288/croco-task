@@ -17,3 +17,8 @@
   display: flex;
   flex-direction: column;
 }
+
+@mixin grid-column($columns, $size) {
+  display: grid;
+  grid-template-columns: repeat($columns, $size);
+}

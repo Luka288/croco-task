@@ -1,0 +1,19 @@
+<div class="leaderboard">
+  <div class="filters">
+    <div class="title">
+      <p>Filter by week</p>
+    </div>
+    <div class="btns">
+      @for (item of weeks; track $index) {
+      <button
+        (click)="filterByWeek(item)"
+        [class.active]="activeWeek() === item"
+      >
+        {{ item }}
+      </button>
+      }
+    </div>
+  </div>
+
+  <app-data-table [columns]="columns" [data]="filteredLeaderboard()" />
+</div>
