@@ -12,13 +12,13 @@ nav {
     display: none;
     color: white;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1150px) {
       display: block;
       font-size: $font-size-large;
     }
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1150px) {
     width: 60px;
   }
 
@@ -35,7 +35,7 @@ nav {
     z-index: 200;
     padding: 0;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1150px) {
       display: none;
     }
 
