@@ -7,10 +7,12 @@ section {
   .table-content {
     width: 50%;
     height: 600px;
+    max-height: auto;
     overflow-x: auto;
     min-width: 600px;
     margin: auto;
     margin-top: $section-top-spacing;
+    display: block;
 
     app-data-table {
       min-width: 650px;

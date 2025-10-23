@@ -7,6 +7,8 @@
 
   table {
     width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
 
     &.full-width {
       width: 100%;
@@ -15,9 +17,28 @@
 
     th,
     td {
-      white-space: nowrap;
+      white-space: pre-wrap;
       text-align: left;
       padding: 8px 12px;
+      border: 1px solid #e0e0e0;
+    }
+
+    th {
+      background-color: #f8f9fa;
+      font-weight: 600;
+      color: #333;
+      border-bottom: 2px solid #d0d0d0;
+      border-top: none;
+    }
+
+    th:not(:last-child),
+    td:not(:last-child) {
+      border-right: 1px solid #e0e0e0;
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: none;
     }
 
     tr {
