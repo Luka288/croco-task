@@ -2,7 +2,7 @@
 @use "../../../styles/variables.scss" as *;
 
 .modal {
-  width: 450px;
+  max-width: 450px;
   min-height: 350px;
   box-sizing: border-box;
   padding: 15px;
