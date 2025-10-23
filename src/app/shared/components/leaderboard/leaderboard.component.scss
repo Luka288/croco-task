@@ -44,7 +44,7 @@
   }
 
   .table {
-    width: 500px;
+    @include table-container();
 
     .row {
       @include grid-column(4, 1fr);

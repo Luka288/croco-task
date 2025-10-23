@@ -1,3 +1,5 @@
+@use "./variables.scss" as *;
+
 @mixin flex(
   $justify: center,
   $align: center,
@@ -21,4 +23,11 @@
 @mixin grid-column($columns, $size) {
   display: grid;
   grid-template-columns: repeat($columns, $size);
+}
+
+@mixin table-container {
+  border: 1px solid $color-border-light;
+  scrollbar-color: #888 $color-input-bg;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background-color: $off-white;
 }

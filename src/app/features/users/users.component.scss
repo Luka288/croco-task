@@ -9,6 +9,7 @@ section {
     max-width: 970px;
     margin: auto;
     overflow-x: auto;
+    @include table-container();
 
     table {
       width: 50%;
