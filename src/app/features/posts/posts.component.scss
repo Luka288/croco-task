@@ -1,12 +1,16 @@
 @use "../../styles/mixins.scss" as *;
+@use "../../styles/variables.scss" as *;
 
 section {
   width: 100%;
 
   .table-content {
     width: 50%;
+    height: 600px;
+    overflow-x: auto;
     min-width: 600px;
     margin: auto;
+    margin-top: $section-top-spacing;
 
     app-data-table {
       min-width: 650px;

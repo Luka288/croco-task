@@ -11,7 +11,6 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { debounceTime } from 'rxjs';
-import { yearsPerPage } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-users',
@@ -32,8 +31,8 @@ export class UsersComponent implements OnInit {
   columns = [
     { header: 'Name', value: (row: User) => row.name },
     { header: 'Last name', value: (row: User) => row.lastName },
-    { header: 'Email', value: (row: User) => row.email },
     { header: 'Phone', value: (row: User) => row.phone },
+    { header: 'Email', value: (row: User) => row.email },
     { header: 'Company', value: (row: User) => row.company.name },
   ];
 

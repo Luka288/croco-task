@@ -104,7 +104,7 @@
         border-radius: $radius-lg;
         box-sizing: border-box;
         padding: 10px;
-        background-color: #dbdbdb;
+        background-color: $color-bg-muted;
       }
 
       button {
@@ -133,6 +133,11 @@
 
     .error-container {
       min-height: 60px;
+
+      p {
+        color: $error-color;
+        font-size: $font-size-medium;
+      }
     }
   }
 }

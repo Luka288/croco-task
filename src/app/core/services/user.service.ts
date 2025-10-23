@@ -23,19 +23,18 @@ export class UserService {
   }
 
   searchUser(searchParam: string): Observable<User[]> {
+    const search = searchParam.toLowerCase();
+
     return this.http
       .get<User[]>(this.USERS_ENDPOINT)
       .pipe(
         map((users) =>
           users
             .map((user) => this.splitName(user))
-            .filter(
-              (user) =>
-                user.name.toLowerCase().includes(searchParam.toLowerCase()) ||
-                user.username
-                  .toLowerCase()
-                  .includes(searchParam.toLowerCase()) ||
-                user.email.toLowerCase().includes(searchParam.toLowerCase())
+            .filter((user) =>
+              [user.name, user.lastName, user.email].some((field) =>
+                field.toLowerCase().includes(search)
+              )
             )
         )
       );

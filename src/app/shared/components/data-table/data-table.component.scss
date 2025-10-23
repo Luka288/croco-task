@@ -24,11 +24,11 @@
       cursor: pointer;
       &.isCompleted {
         background-color: $success-green !important;
-        color: white;
+        color: $color-white;
 
         &:hover {
           background-color: $success-green-hover !important;
-          color: white;
+          color: $color-white;
         }
       }
 
@@ -47,7 +47,7 @@
         outline: none;
         border: none;
         background-color: $soft-green;
-        color: white;
+        color: $color-white;
         box-sizing: border-box;
         padding: 10px;
         cursor: pointer;

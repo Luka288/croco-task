@@ -10,7 +10,7 @@ nav {
 
   i {
     display: none;
-    color: white;
+    color: $color-white;
 
     @media (max-width: 1150px) {
       display: block;

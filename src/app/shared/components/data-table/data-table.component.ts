@@ -5,7 +5,6 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { MatButton } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { TruncatePipe } from '../../../core/pipes/truncate.pipe';
 
