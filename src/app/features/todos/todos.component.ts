@@ -18,7 +18,7 @@ export class TodosComponent implements OnInit {
   todoData = signal<TodoInterface[]>([]);
 
   columns = [
-    { header: 'userId', value: (row: TodoInterface) => row.userId },
+    { header: 'ID', value: (row: TodoInterface) => row.userId },
     { header: 'Title', value: (row: TodoInterface) => row.title },
     {
       header: 'Status',
